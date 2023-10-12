@@ -170,19 +170,16 @@ print(c)        // 18
 let num1 = 22
 let num2 = 15
 if num1 > num2{
-     
     print("num1 больше чем num2")
 }
 
 if num1{
-     
     print("num1 больше чем num2")
 }
 
 let num1 = 22
 let num2 = 15
 if num1 > num2{
-     
     print("num1 больше чем num2")
 }
 else{
@@ -199,15 +196,12 @@ else{
 let num1 = 22
 let num2 = 15
 if num1 > num2{
-     
     print("num1 больше чем num2")
 }
 else if (num1 < num2){
- 
     print("num1 меньше чем num2")
 }
 else {
- 
     print("num1 и num2 равны")
 }
 
