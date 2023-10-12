@@ -2,7 +2,7 @@
 //  main.swift
 //  ErrorNilSchool
 //
-//  Created by Shamil Aglarov on 12.10.2023.
+//  5th Stream
 //
 
 import Foundation
