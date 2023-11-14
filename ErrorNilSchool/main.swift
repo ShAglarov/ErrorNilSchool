@@ -2,7 +2,7 @@
 //  main.swift
 //  ErrorNilSchool
 //
-//Lesson-10
+//Lesson-10 (Дженерики)
 
 import Foundation
 
@@ -308,3 +308,134 @@ let incrementByTwo = makeIncrementer(incrementAmount: 2)
 
 /// Результат выполнения: вернет 9.
 let result5 = incrementByTwo(7)
+
+/// -------------------------------------------------------------
+
+func swapTwoValues<T>(_ a: inout T, _ b: inout T) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+
+var int1 = 3
+var int2 = 4
+swapTwoValues(&int1, &int2)
+print(int1, int2) // 4, 3
+
+//------------------------------------------------
+
+var string1 = "Hello"
+var string2 = "World"
+swapTwoValues(&string1, &string2)
+print(string1, string2) // World, Hello
+
+//------------------------------------------------
+//2. Дженерик структуры:
+//Стек, который работает с любым типом данных:
+struct Stack<Element> {
+    private var items: [Element] = []
+
+    mutating func push(_ item: Element) {
+        items.append(item)
+    }
+
+    mutating func pop() -> Element? {
+        return items.popLast()
+    }
+
+    func peek() -> Element? {
+        return items.last
+    }
+}
+
+var intStack = Stack<Int>()
+intStack.push(5)
+intStack.push(10)
+print(intStack.peek() ?? "Empty") // 10
+
+var stringStack = Stack<String>()
+stringStack.push("Swift")
+stringStack.push("Generics")
+print(stringStack.peek() ?? "Empty") // Generics
+
+//------------------------------------------------
+1. Дженерик с несколькими параметрами:
+
+func pair<T, U>(_ first: T, _ second: U) -> (T, U) {
+    return (first, second)
+}
+
+let result = pair("Hello", 42)
+print(result) // ("Hello", 42)
+
+//------------------------------------------------
+1. Применение дженериков с протоколами и условиями:
+func areEqual<T: Equatable>(_ x: T, _ y: T) -> Bool {
+    return x == y
+}
+
+print(areEqual(4, 4))           // true
+print(areEqual("a", "b"))       // false
+
+//------------------------------------------------
+
+class Animal {
+    var name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+}
+
+class AnimalBox<T: Animal> {
+    var animal: T?
+    
+    init(_ animal: T?) {
+        self.animal = animal
+    }
+}
+
+class Dog: Animal {}
+class Cat: Animal {}
+
+let dogBox = AnimalBox(Dog(name: "Buddy"))
+let catBox = AnimalBox(Cat(name: "Whiskers"))
+
+//------------------------------------------------
+//4. Дженерик-функция с ограничением для типов, реализующих протокол:
+protocol HasDescription {
+    var description: String { get }
+}
+
+func printDescription<T: HasDescription>(_ item: T) {
+    print(item.description)
+}
+
+extension Int: HasDescription {
+    var description: String {
+        return "Integer value is \(self)"
+    }
+}
+
+printDescription(42)  // Integer value is 42
+
+//------------------------------------------------
+//Дженерики с условиями в расширениях:
+
+extension Array where Element: Equatable {
+    func containsElement(_ element: Element) -> Bool {
+        return self.contains(element)
+    }
+}
+
+let stringArray = ["apple", "orange", "banana"]
+print(stringArray.containsElement("apple"))  // true
+
+struct CustomStruct {
+    var id: Int
+}
+
+let customArray: [CustomStruct] = [CustomStruct(id: 1)]
+// customArray.containsElement(CustomStruct(id: 1)) 
+// Этот код вызовет ошибку компиляции, так как CustomStruct не реализует Equatable
+//------------------------------------------------
