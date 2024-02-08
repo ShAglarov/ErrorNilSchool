@@ -152,7 +152,7 @@ let tropicalFruits: Set<String> = ["banana", "mango", "papaya"]
 // Объединение
 print(fruits.union(tropicalFruits)) // ["mango", "papaya", "orange", "banana", "apple", "cherry"]
 
-// Пересечение - intersection (НАЙТИ ПОЛЬЗОВАТЕЛЯ КОТОРЫЙ БЫЛ РАНЕЕ ЗАРЕГЕСТРИРОВАН
+// Пересечение - intersection (НАЙТИ ПОЛЬЗОВАТЕЛЕЙ КОТОРЫЕ БЫЛМ РАНЕЕ ЗАРЕГЕСТРИРОВАНЫ
 var users = Set<String>(["alex", "valera", "uriy", "sergey"])
 
 var newUsers = Set<String>([])
@@ -166,16 +166,21 @@ print("\(users.intersection(newUsers)) - уже зарегестрированы
 
 ///////////////////////////////-----------------------------------------------------------------------------------------------------------------------------------------
 
-// Разность
-print(fruits.subtracting(tropicalFruits)) // ["orange", "apple", "cherry"]
+//Разность subtracting (НАЙТИ ПОЛЬЗОВАТЕЛЕЙ КОТОРЫЕ БЫЛИ РАНЕЕ ЗАРЕГЕСТРИРОВАНЫ НО НЕТ В НОВОМ СПИСКЕ
+
+print("ПОЛЬЗОВАТЕЛИ КОТОРЫЕ БЫЛИ РАНЕЕ ЗАРЕГЕСТРИРОВАНЫ НО НЕТ В НОВОМ СПИСКЕ \(users.subtracting(newUsers))")
+
+///////////////////////////////-----------------------------------------------------------------------------------------------------------------------------------------
 
 // Исключающее или (элементы, которые присутствуют только в одном из множеств)
-print(fruits.symmetricDifference(tropicalFruits)) // ["mango", "papaya", "orange", "apple", "cherry"]
 
-// 4. Проверка на наличие элементов
-print(fruits.contains("apple")) // true
-print(fruits.contains("grape")) // false
+//Разность symmetricDifference (НАЙТИ ПОЛЬЗОВАТЕЛЕЙ КОТОРЫЕ ЕСТЬ СПИСКАХ НО НЕ В ОБОИХ ОДНОВРЕМЕННО
 
+print("ПОЛЬЗОВАТЕЛЕЙ КОТОРЫЕ ЕСТЬ СПИСКАХ НО НЕ В ОБОИХ ОДНОВРЕМЕННО \(users.symmetricDifference(newUsers))")
+
+// НАЙТИ ЛЮБОЙ ЭЛЕМЕНТ В МАССИВЕ МОЖНО С ПОМОЩЬЮ CONTINUE
+
+print("\(users.contains("alex") ? "Алекс есть в списке USERS" : "Алекса нет в списке USERS")")
 
 // Функции
 
