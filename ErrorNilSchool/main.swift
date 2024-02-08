@@ -152,8 +152,19 @@ let tropicalFruits: Set<String> = ["banana", "mango", "papaya"]
 // Объединение
 print(fruits.union(tropicalFruits)) // ["mango", "papaya", "orange", "banana", "apple", "cherry"]
 
-// Пересечение
-print(fruits.intersection(tropicalFruits)) // ["banana"]
+// Пересечение - intersection (НАЙТИ ПОЛЬЗОВАТЕЛЯ КОТОРЫЙ БЫЛ РАНЕЕ ЗАРЕГЕСТРИРОВАН
+var users = Set<String>(["alex", "valera", "uriy", "sergey"])
+
+var newUsers = Set<String>([])
+
+newUsers.insert("vova")
+newUsers.insert("ivan")
+newUsers.insert("sergey")
+newUsers.insert("alex")
+
+print("\(users.intersection(newUsers)) - уже зарегестрированы в системе")
+
+///////////////////////////////-----------------------------------------------------------------------------------------------------------------------------------------
 
 // Разность
 print(fruits.subtracting(tropicalFruits)) // ["orange", "apple", "cherry"]
