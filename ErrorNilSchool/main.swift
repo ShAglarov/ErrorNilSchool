@@ -88,7 +88,7 @@ struct People {
         let components = data.split(separator: ",")
 
         if components.count != 2 { return nil }
-
+        //Удаляем пробелы начала и конца строки
         let nameComponent = components[0].trimmingCharacters(in: .whitespaces)
         let ageComponent = components[1].trimmingCharacters(in: .whitespaces)
 
@@ -104,17 +104,6 @@ struct People {
 
     func displayInfo() {
         print("Имя: \(name), Возраст \(age)")
-    }
-
-    subscript(index: Int) -> String {
-        switch index {
-        case 0:
-            return String(name.first ?? Character(" "))
-        case 1:
-            return String(status.first ?? Character(" "))
-        default:
-            return "Неверный индекс"
-        }
     }
 }
 
@@ -134,12 +123,6 @@ alex?.haveBirthday()  // Ваш возраст изменился и тепер�
 print(alex?.status ?? "No data")  // Вывод: Alex является взрослым
 
 alex?.wishHappyBirthday()  // Вывод: С Днем Рождения, Alex! Тебе исполнилось 18 лет!
-
-if let alex = alex {
-    print(alex[0])  // Вывод: A
-    print(alex[1])  // Вывод: A
-    print(alex[2])  // Вывод: Неверный индекс
-}
 
 struct Smartphone {
     // Приватные свойства
